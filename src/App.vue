@@ -5,6 +5,8 @@
     <router-link to="/about">About</router-link>
     |
     <router-link to="/movies">All movies</router-link>
+    |
+    <router-link to="/movies/new">Add movie</router-link>
   </nav>
   <router-view />
 </template>
