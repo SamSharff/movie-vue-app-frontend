@@ -28,7 +28,7 @@ export default {
 </script>
 <template>
   <div class="movies-new">
-    <h1>Create a movie here!</h1>
+    <h1>Add a movie to our database!</h1>
     <div>
       Title:
       <input type="text" v-model="newMovieParams.title" />

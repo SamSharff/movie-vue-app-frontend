@@ -21,8 +21,8 @@ export default {
     <div v-for="movie in movies" v-bind:key="movie.id">
       <h2>Title: {{ movie.title }}</h2>
       <p>Year: {{ movie.year }}</p>
-      <p>Plot: {{ movie.plot }}</p>
-      <button v-on:click="showMovie(movie)">More info</button>
+      <!-- <router-link v-bind:to="`/movies/${movie.id}`">More info</router-link> -->
+      <a :href="`/movies/${movie.id}`">More Info</a>
     </div>
   </div>
 </template>
