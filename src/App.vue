@@ -7,6 +7,8 @@
     <router-link to="/movies">All movies</router-link>
     |
     <router-link to="/movies/new">Add movie</router-link>
+    |
+    <router-link to="/movies/signup">Sign up</router-link>
   </nav>
   <router-view />
 </template>

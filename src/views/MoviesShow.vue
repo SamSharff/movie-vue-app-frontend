@@ -23,6 +23,6 @@ export default {
     <p>Plot: {{ movie.plot }}</p>
     <p>Director: {{ movie.director }}</p>
     <!-- <button v-on:click="moviesIndex()">Back to movies database</button> -->
-    <router-link to="/movies">Back to movies database</router-link>
+    <router-link to="/movies">Back to database</router-link>
   </div>
 </template>
