@@ -11,6 +11,8 @@
     <router-link to="/movies/signup">Sign up</router-link>
     |
     <router-link to="/movies/login">Log in</router-link>
+    |
+    <router-link to="/movies/logout">Log out</router-link>
   </nav>
   <router-view />
 </template>

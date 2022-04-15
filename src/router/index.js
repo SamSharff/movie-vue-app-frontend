@@ -5,6 +5,7 @@ import MoviesNew from "../views/MoviesNew.vue";
 import MoviesShow from "../views/MoviesShow.vue";
 import MoviesSignUp from "../views/MoviesSignUp.vue";
 import MoviesLogIn from "../views/LogIn.vue";
+import MoviesLogOut from "../views/LogOut.vue";
 
 const routes = [
   {
@@ -44,6 +45,11 @@ const routes = [
     path: "/movies/login",
     name: "movies-login",
     component: MoviesLogIn,
+  },
+  {
+    path: "/movies/logout",
+    name: "movies-logout",
+    component: MoviesLogOut,
   },
 ];
 
