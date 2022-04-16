@@ -1,5 +1,6 @@
 <script>
 import axios from "axios";
+// import func from "vue-editor-bridge";
 
 export default {
   data: function () {
@@ -8,6 +9,7 @@ export default {
       movies: [],
       newMovieParams: {},
       currentMovie: {},
+      editMovieParams: {},
     };
   },
   created: function () {
@@ -32,6 +34,18 @@ export default {
       console.log(movie);
       this.currentMovie = movie;
       document.querySelector("#movie-details").showModal();
+    },
+    updateMovie: function (movie) {
+      // var editMovieParams = movie;
+      axios
+        .patch("/movies/" + movie.id + ".json", this.editMovieParams)
+        .then((response) => {
+          console.log("update movie", response);
+          this.currentMovie = {};
+        })
+        .catch((error) => {
+          console.log("error updating movie", error.response);
+        });
     },
   },
 };
@@ -61,33 +75,45 @@ export default {
     <br />
 
     <button v-on:click="createMovie">Add a movie</button>
+
+    <!-- Movies index -->
+
     <div>
       <div v-for="movie in movies" v-bind:key="movie.id">
         <h2>Title: {{ movie.title }}</h2>
         <p>Year: {{ movie.year }}</p>
-        <p>Plot: {{ movie.plot }}</p>
+        <!-- <p>Plot: {{ movie.plot }}</p>
+        <p>Director: {{ movie.director }}</p> -->
+
+        <!-- Movies Show and Update -->
         <button v-on:click="showMovie(movie)">More info</button>
       </div>
 
       <dialog id="movie-details">
         <form method="dialog">
           <h1>Movie info</h1>
+          <p>Title: {{ currentMovie.title }}</p>
+          <p>Year: {{ currentMovie.year }}</p>
+          <p>Plot: {{ currentMovie.plot }}</p>
+          <p>Director: {{ currentMovie.director }}</p>
+          <!-- Movies update -->
           <p>
             Title:
-            <input type="text" v-model="currentMovie.title" />
+            <input type="text" v-model="editMovieParams.title" />
           </p>
           <p>
             Year:
-            <input type="text" v-model="currentMovie.year" />
+            <input type="text" v-model="editMovieParams.year" />
           </p>
           <p>
             Plot:
-            <input type="text" v-model="currentMovie.plot" />
+            <input type="text" v-model="editMovieParams.plot" />
           </p>
           <p>
             Director:
-            <input type="text" v-model="currentMovie.director" />
+            <input type="text" v-model="editMovieParams.director" />
           </p>
+          <button v-on:click="updateMovie(currentMovie)">Update Movie</button>
           <!-- <p>
             English:
             <input type="text" v-model="currentMovie.english" /> -->
