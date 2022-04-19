@@ -22,7 +22,8 @@ export default {
     <p>Year: {{ movie.year }}</p>
     <p>Plot: {{ movie.plot }}</p>
     <p>Director: {{ movie.director }}</p>
-    <!-- <button v-on:click="moviesIndex()">Back to movies database</button> -->
     <router-link to="/movies">Back to database</router-link>
+    <br />
+    <router-link v-bind:to="`/movies/${movie.id}/edit`">Edit movie</router-link>
   </div>
 </template>
