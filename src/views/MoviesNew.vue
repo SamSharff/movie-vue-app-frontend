@@ -4,7 +4,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      newMovieParams: {},
+      newMovieParams: { plot: "" },
       error: [],
     };
   },
@@ -29,7 +29,7 @@ export default {
 <template>
   <div class="movies-new">
     <h1>Add a movie to our database!</h1>
-    <div>
+    <form>
       Title:
       <input type="text" v-model="newMovieParams.title" />
       <br />
@@ -39,11 +39,13 @@ export default {
       Plot:
       <input type="text" v-model="newMovieParams.plot" />
       <br />
+      <small>{{ 500 - newMovieParams.plot.length }} characters remaining</small>
+      <br />
       Director:
       <input type="text" v-model="newMovieParams.director" />
       <br />
       <button v-on:click="createMovie()">Create!</button>
-    </div>
+    </form>
   </div>
   <!-- <form>
     <ul>

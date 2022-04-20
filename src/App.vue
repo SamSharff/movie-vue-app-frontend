@@ -1,3 +1,12 @@
+<script>
+export default {
+  methods: {
+    isLoggedIn: function () {
+      return localStorage.getItem("jwt");
+    },
+  },
+};
+</script>
 <template>
   <nav>
     <router-link to="/">Home</router-link>
@@ -8,11 +17,14 @@
     |
     <router-link to="/movies/new">Add movie</router-link>
     |
-    <router-link to="/movies/signup">Sign up</router-link>
-    |
-    <router-link to="/movies/login">Log in</router-link>
-    |
-    <router-link to="/movies/logout">Log out</router-link>
+    <span v-if="isLoggedIn()">
+      <router-link to="/movies/logout">Log out</router-link>
+    </span>
+    <span v-else>
+      <router-link to="/movies/signup">Sign up</router-link>
+      |
+      <router-link to="/movies/login">Log in</router-link>
+    </span>
   </nav>
   <router-view />
 </template>
